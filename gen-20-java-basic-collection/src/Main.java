@@ -5,13 +5,15 @@ public class Main {
         //membuat ArrayList untuk menyimpan data barang
         ArrayList<String> listBarang = new ArrayList<>();
         inputBarang(listBarang);
-        TampilkanDataBarang.tampilkanDataBarang(listBarang);
+        TampilkanDataBarang tdb = new TampilkanDataBarang();
+
+        tdb.tampilkanDataBarang(listBarang);
 
 
         //mengulang method ketika user masuk ke salah satu blok catchnya
         while (true) {
             try {
-                TampilkanDataBarang.tampilkanSatuData(listBarang);
+                tdb.tampilkanSatuData(listBarang);
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Indeks tidak valid.Silahkan masukan lagi");
@@ -25,11 +27,11 @@ public class Main {
         // konversi ArrayList ke HashSet
         Set<String> setBarang = new HashSet<>(listBarang);
 
-        TampilkanDataBarang.tampilkanDataBarang(setBarang);
+        tdb.tampilkanDataBarang(setBarang);
         //konversi HashSet ke HashMap
         Map<String,Integer> mapBarang = new HashMap<>();
         inputHargaBarang(setBarang, mapBarang);
-        TampilkanDataBarang.tampilkanDataBarang(mapBarang);
+        tdb.tampilkanDataBarang(mapBarang);
 
     }
 
