@@ -18,7 +18,7 @@ public class Produk {
         return harga;
     }
 
-    // Metode untuk mendapatkan diskon dalam persentase (default: 0)
+    // Metode untuk mendapatkan diskon
     public double getDiskonPersen() {
         return 0.0;
     }
