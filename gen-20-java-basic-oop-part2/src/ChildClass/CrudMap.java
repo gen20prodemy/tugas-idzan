@@ -41,7 +41,7 @@ public class CrudMap implements CrudOperationsMap {
 
             if (productMap.containsKey(id)) {
                 ProductMap product = productMap.get(id);
-                System.out.println("ID : " + product.getId() + ", Name: " + product.getName());
+                System.out.println("ID : " + product.getId() + ", Nama: " + product.getName());
             } else {
                 System.out.println("ID tidak ditemukan.");
             }
@@ -53,7 +53,7 @@ public class CrudMap implements CrudOperationsMap {
         System.out.println("Seluruh Element pada map: ");
         for (Map.Entry<Integer, ProductMap> entry : productMap.entrySet()) {
             ProductMap product = entry.getValue();
-            System.out.println("ID: " + product.getId() +" Name: "+product.getName());
+            System.out.println("ID: " + product.getId() +" Nama: "+product.getName());
         }
     }
 

@@ -18,7 +18,7 @@ public class Main {
                 System.out.println("5. Update Element");
                 System.out.println("6. Exit");
 
-                System.out.print("Enter your choice: ");
+                System.out.print("Masukan Pilihan: ");
                 int choice = scanner.nextInt();
                 System.out.println();
                 switch (choice) {
@@ -31,7 +31,7 @@ public class Main {
                         System.out.println();
                     }
                     case 2 -> {
-                        System.out.print("Enter ID to delete: ");
+                        System.out.print("Masukan id untuk di hapus : ");
                         int deleteId = scanner.nextInt();
                         crudMap.deleteElement(deleteId);
                         System.out.println();
@@ -48,7 +48,9 @@ public class Main {
                         crudMap.updateElement(updateId, updateName);
                         System.out.println();
                     }
-                    case 6 -> System.exit(0);
+                    case 6 -> {
+                        System.out.println("Program Selesai");
+                        System.exit(0);}
                     default -> System.out.println("Angka tidak ada di menu pilihan");
                 }
 

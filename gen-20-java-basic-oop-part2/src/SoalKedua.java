@@ -19,12 +19,12 @@ public class SoalKedua {
                 System.out.println("5. Update Data");
                 System.out.println("6. Exit");
 
-                System.out.print("Enter your choice: ");
-                int choice = scanner.nextInt();
+                System.out.print("Masukan pilihan: ");
+                int pilihan = scanner.nextInt();
                 scanner.nextLine();
                 System.out.println();
 
-                switch (choice) {
+                switch (pilihan) {
                     case 1 -> {
                         System.out.print("Masukkan ID: ");
                         int addId = scanner.nextInt();
@@ -68,7 +68,7 @@ public class SoalKedua {
                         System.out.println();
                     }
                     case 6 -> {
-                        System.out.println("Exiting program.");
+                        System.out.println("Program Selesai.");
                         System.exit(0);
                     }
                     default -> System.out.println("Angka tidak ada di menu pilihan");

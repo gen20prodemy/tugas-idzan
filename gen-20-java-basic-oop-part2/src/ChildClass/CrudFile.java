@@ -24,21 +24,24 @@ public class CrudFile extends CrudOperationsFile {
     @Override
     public void updateRow(DataFile newData) {
         try {
+            // Membuat objek File untuk file asli
             File inputFile = new File(FILE_PATH);
+            // Membuat objek File untuk file sementara
             File tempFile = new File("temp.txt");
 
             boolean idFound = false;
 
+            // Membuka file asli untuk dibaca dan file sementara untuk ditulis
             try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
                  PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
 
                 String line;
+                // Iterasi melalui setiap baris dalam file asli
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(" ");
                     int id = Integer.parseInt(parts[0]);
 
                     if (id == newData.getId()) {
-
                         writer.println(newData);
                         idFound = true;
                         System.out.println("Data berhasil di update");
@@ -48,7 +51,7 @@ public class CrudFile extends CrudOperationsFile {
                 }
             }
 
-
+            // Mengganti file asli dengan file sementara
             if (!inputFile.delete() || !tempFile.renameTo(inputFile)) {
                 System.err.println("Error updating the file.");
             }
@@ -83,6 +86,7 @@ public class CrudFile extends CrudOperationsFile {
                         System.out.println("Data berhasil dihapus");
                     } else {
                         writer.println(line);
+
                     }
                 }
             }
@@ -99,6 +103,7 @@ public class CrudFile extends CrudOperationsFile {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
     }
 
     @Override
