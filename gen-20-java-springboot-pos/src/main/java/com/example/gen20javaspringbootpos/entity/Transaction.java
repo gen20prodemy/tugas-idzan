@@ -18,6 +18,8 @@ public class Transaction {
     private int quantity;
     private Timestamp transactionDate;
 
+
+
     public Long getTransactionId() {
         return transactionId;
     }
@@ -51,10 +53,9 @@ public class Transaction {
     }
 
     public Long getProductId() {
-        if (product != null) {
-            return product.getProductId();
-        }
-        return null;
+
+        return product.getProductId();
+
     }
 
 }

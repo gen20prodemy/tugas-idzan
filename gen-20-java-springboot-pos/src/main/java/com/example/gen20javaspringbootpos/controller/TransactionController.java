@@ -30,11 +30,24 @@ public class TransactionController {
                         transactionService.getAllTransactions());
     }
 
-    @GetMapping("/greaterthan10")
+    @GetMapping("/lebihdari10")
     public GlobalHttpResponse<List<TransactionDTO>> findTransactionsGreaterThan10() {
         return new GlobalHttpResponse<>
-                (HttpStatus.OK.value(), "Semua transaksi yang lebih dari 10 berhasil diambil",
+                (HttpStatus.OK.value(), "Semua transaksi yang lebih quantity dari 10 berhasil diambil",
                 transactionService.findTransactionsGreaterThan10());
+    }
+
+    //Endpoint untuk yg insert dengan JPQL
+    @PostMapping("/insertJPQL")
+    public GlobalHttpResponse<Void> insertTransactionJPQL(@RequestBody TransactionDTO transactionDTO) {
+        transactionService.insertTransactionJPQL(transactionDTO);
+        return new GlobalHttpResponse<>(HttpStatus.CREATED.value(), "Transaksi berhasil dibuat dengan JPQL", null);
+    }
+
+    // Endpoin untuk yg select dengan JPQL
+    @GetMapping("/lebihdariInputJPQL")
+    public GlobalHttpResponse<List<TransactionDTO>> findTransactionsGreaterThanInputJPQL(@RequestParam int quantity) {
+        return new GlobalHttpResponse<>(HttpStatus.OK.value(), "Semua transaksi yang quantity lebih dari "+ quantity+ " berhasil diambil menggunakan JPQL", transactionService.findTransactionsGreaterThanInputJPQL(quantity));
     }
 }
 

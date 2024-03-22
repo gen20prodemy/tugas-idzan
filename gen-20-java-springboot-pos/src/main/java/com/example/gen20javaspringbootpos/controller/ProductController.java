@@ -25,7 +25,7 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @GetMapping("/namea/{name}")
+    @GetMapping("/name/{name}")
     public List<Product> getProductsByName(@PathVariable("name") String name) {
         return productService.getProductsByName(name);
     }

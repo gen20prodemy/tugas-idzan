@@ -44,6 +44,19 @@ public class TransactionService {
                 .collect(Collectors.toList());
     }
 
+    // UPDATE for JPQL insert
+    public void insertTransactionJPQL(TransactionDTO transactionDTO) {
+        transactionRepository.insertTransactionJPQL(transactionDTO.getProductId(),
+                transactionDTO.getQuantity());
+    }
+
+    // UPDATE for JPQL select
+    public List<TransactionDTO> findTransactionsGreaterThanInputJPQL(int quantity) {
+        List<Transaction> transactions = transactionRepository.findTransactionsGreaterThanInputJPQL(quantity);
+        return transactions.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 
 
 
