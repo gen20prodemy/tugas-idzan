@@ -25,14 +25,13 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/namea/{name}")
     public List<Product> getProductsByName(@PathVariable("name") String name) {
         return productService.getProductsByName(name);
     }
 
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public Product addProduct(@RequestBody Product product) {
         return productService.createProduct(product);
     }
