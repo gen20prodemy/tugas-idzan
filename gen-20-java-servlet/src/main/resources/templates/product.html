@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<table border="1" style="border-collapse: collapse;margin: 5.5rem auto">
+<table border="1" style="border-collapse: collapse; margin: 5.5rem auto">
     <thead >
     <tr>
         <th>ID</th>
@@ -24,11 +24,11 @@
     </thead>
     <tbody>
     <!-- Loop through productList and display each product as a row in the table -->
-    <tr th:each="product : ${productList}">
-        <td th:text="${product.id}"></td>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productId}"></td>
         <td th:text="${product.name}"></td>
         <td th:text="'Rp. ' + ${product.price}"></td>
-        <td th:text="${product.category}"></td>
+        <td th:text="${product.categoryName}"></td>
     </tr>
     </tbody>
 </table>
