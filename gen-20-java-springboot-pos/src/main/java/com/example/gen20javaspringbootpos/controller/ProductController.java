@@ -1,5 +1,6 @@
 package com.example.gen20javaspringbootpos.controller;
 
+import com.example.gen20javaspringbootpos.dto.ProductDTO;
 import com.example.gen20javaspringbootpos.entity.Product;
 import com.example.gen20javaspringbootpos.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +17,24 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> getProductById(@PathVariable("id") Long id) {
+    public Optional<ProductDTO> getProductById(@PathVariable("id") Long id) {
         return productService.getProductById(id);
     }
 
     @GetMapping("/name/{name}")
-    public List<Product> getProductsByName(@PathVariable("name") String name) {
+    public List<ProductDTO> getProductsByName(@PathVariable("name") String name) {
         return productService.getProductsByName(name);
     }
 
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
+    public ProductDTO addProduct(@RequestBody ProductDTO productDTO) {
+        return productService.createProduct(productDTO);
     }
 
 
