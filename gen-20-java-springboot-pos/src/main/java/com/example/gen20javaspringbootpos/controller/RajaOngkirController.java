@@ -6,6 +6,7 @@ import com.example.gen20javaspringbootpos.service.CostService;
 import com.example.gen20javaspringbootpos.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +19,7 @@ public class RajaOngkirController {
     @Autowired
     private ProvinceService provinceService;
 
-
+    @Scheduled(cron = "*/10 * * * * *")
     @GetMapping("/province/Alldata")
     public  ProvinceDTO getDataAPI(){
         return provinceService.getAllDataDariApi();
@@ -32,4 +33,6 @@ public class RajaOngkirController {
     public CostDTO getDataAPI (@RequestBody String requestBody){
         return  costService.getDataDariAPI(requestBody);
     }
+
+
 }

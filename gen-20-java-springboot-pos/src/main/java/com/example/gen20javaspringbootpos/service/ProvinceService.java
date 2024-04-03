@@ -26,6 +26,7 @@ public class ProvinceService {
                 .body(String.class);
 
        try {
+           System.out.println("Mengambil semua data dari provinsi");
            ObjectMapper objectMapper =MappingUtil.getObjectMapper();
            ProvinceDTO provinceDTO = objectMapper.readValue(jsonResponse , ProvinceDTO.class);
            return  provinceDTO;
