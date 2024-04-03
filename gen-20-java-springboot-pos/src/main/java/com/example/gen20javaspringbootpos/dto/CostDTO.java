@@ -9,16 +9,12 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class CostDTO {
 
     private  RajaOngkir rajaongkir;
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 class RajaOngkir{
 
@@ -32,8 +28,6 @@ class RajaOngkir{
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 class OriginDetails {
     @JsonProperty("city_name")
@@ -41,8 +35,6 @@ class OriginDetails {
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 class  DestinationDetails {
     @JsonProperty("city_name")
@@ -50,8 +42,6 @@ class  DestinationDetails {
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Result {
     private String name;
@@ -59,8 +49,6 @@ class Result {
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 class ServiceInfo {
     private String service;
     private String description;
@@ -68,8 +56,6 @@ class ServiceInfo {
 }
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Cost {
     private int value;

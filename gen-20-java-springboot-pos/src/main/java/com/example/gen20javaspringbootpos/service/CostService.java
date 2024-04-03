@@ -22,9 +22,9 @@ public class CostService {
                 .build();
     }
 
-    public CostDTO getDataDariAPI() {
+    public CostDTO getDataDariAPI(String request) {
 
-        String request = "origin=501&destination=114&weight=1700&courier=jne";
+        //String request = "origin=501&destination=114&weight=1700&courier=jne";
 
         String jsonResponse = webClient.post()
                 .uri("/cost")
