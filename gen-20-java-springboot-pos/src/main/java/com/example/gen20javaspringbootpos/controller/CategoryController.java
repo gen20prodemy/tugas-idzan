@@ -28,8 +28,17 @@ public class CategoryController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public CategoryDTO addCategory(@RequestBody CategoryDTO categoryDTO) {
         return categoryService.createCategory(categoryDTO);
+    }
+
+    @GetMapping("/redis")
+    public List<CategoryDTO> getAllCategoriesFromRedis() {
+        return categoryService.getCategoryRedis();
+    }
+
+    @PostMapping("/redis")
+    public CategoryDTO addCategoryToRedis(@RequestBody CategoryDTO categoryDTO) {
+        return categoryService.createCategoryRedis(categoryDTO);
     }
 }

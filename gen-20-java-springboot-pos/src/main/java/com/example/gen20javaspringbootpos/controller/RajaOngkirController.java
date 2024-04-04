@@ -19,7 +19,7 @@ public class RajaOngkirController {
     @Autowired
     private ProvinceService provinceService;
 
-    @Scheduled(cron = "*/10 * * * * *")
+//    @Scheduled(cron = "*/10 * * * * *")
     @GetMapping("/province/Alldata")
     public  ProvinceDTO getDataAPI(){
         return provinceService.getAllDataDariApi();
