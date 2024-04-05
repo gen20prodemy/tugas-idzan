@@ -5,6 +5,7 @@ import com.example.gen20javaspringbootpos.entity.Category;
 import com.example.gen20javaspringbootpos.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Autowired
     private RedisTemplate<String, CategoryDTO> redisTemplate;
@@ -37,12 +41,14 @@ public class CategoryService {
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = new Category(categoryDTO.getName());
         category = categoryRepository.save(category);
-        return new CategoryDTO(category.getCategoryId(), category.getName());
+        CategoryDTO categoryCreated = new CategoryDTO(category.getCategoryId(), category.getName());
+
+        return categoryCreated;
     }
 
     public CategoryDTO createCategoryRedis(CategoryDTO categoryDTO) {
         String redisKey = "category:" + categoryDTO.getCategoryId();
-        redisTemplate.opsForValue().set(redisKey, categoryDTO,1000);
+        redisTemplate.opsForValue().set(redisKey, categoryDTO);
 
         return categoryDTO;
     }

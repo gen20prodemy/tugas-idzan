@@ -3,6 +3,7 @@ package com.example.gen20javaspringbootpos.controller;
 import com.example.gen20javaspringbootpos.dto.CategoryDTO;
 import com.example.gen20javaspringbootpos.entity.Category;
 import com.example.gen20javaspringbootpos.service.CategoryService;
+import com.example.gen20javaspringbootpos.service.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private KafkaService kafkaService;
 
     @GetMapping
     public List<CategoryDTO> getAllCategories() {
@@ -40,5 +44,15 @@ public class CategoryController {
     @PostMapping("/redis")
     public CategoryDTO addCategoryToRedis(@RequestBody CategoryDTO categoryDTO) {
         return categoryService.createCategoryRedis(categoryDTO);
+    }
+
+    @PostMapping("/kafka")
+    public CategoryDTO addCategoryKafka(@RequestBody CategoryDTO categoryDTO) {
+        CategoryDTO createdCategory = categoryService.createCategory(categoryDTO);
+
+        // Mengirimkan pesan ke topik Kafka
+        kafkaService.sendMessage("kategori-topic", createdCategory);
+
+        return createdCategory;
     }
 }
