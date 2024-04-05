@@ -6,6 +6,7 @@ import com.example.gen20javaspringbootpos.service.CostService;
 import com.example.gen20javaspringbootpos.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,12 @@ public class RajaOngkirController {
     }
     @PostMapping(value = "/cost" , consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public CostDTO getDataAPI (@RequestBody String requestBody){
-        return  costService.getDataDariAPI(requestBody);
+        System.out.println("Notifikasi Asynchronous");
+        CostDTO getData =  costService.getDataDariAPI(requestBody);
+
+
+
+        return  getData;
     }
 
 

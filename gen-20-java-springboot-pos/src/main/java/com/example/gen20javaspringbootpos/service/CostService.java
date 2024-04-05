@@ -34,9 +34,10 @@ public class CostService {
                 .block();
 
         try {
+
             ObjectMapper objectMapper = MappingUtil.getObjectMapper();
             CostDTO costDTO =objectMapper.readValue(jsonResponse, CostDTO.class);
-
+            System.out.println(costDTO);
             return costDTO;
         } catch (JsonProcessingException e){
             e.printStackTrace();

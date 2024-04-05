@@ -2,10 +2,12 @@ package com.example.gen20javaspringbootpos.controller;
 
 import com.example.gen20javaspringbootpos.dto.CategoryDTO;
 import com.example.gen20javaspringbootpos.entity.Category;
+import com.example.gen20javaspringbootpos.service.AsyncService;
 import com.example.gen20javaspringbootpos.service.CategoryService;
 import com.example.gen20javaspringbootpos.service.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class CategoryController {
     @Autowired
     private KafkaService kafkaService;
 
+    @Autowired
+    private AsyncService asyncService;
+
     @GetMapping
     public List<CategoryDTO> getAllCategories() {
         return categoryService.getAllCategories();
@@ -35,6 +40,8 @@ public class CategoryController {
     public CategoryDTO addCategory(@RequestBody CategoryDTO categoryDTO) {
         return categoryService.createCategory(categoryDTO);
     }
+
+
 
     @GetMapping("/redis")
     public List<CategoryDTO> getAllCategoriesFromRedis() {
@@ -55,4 +62,6 @@ public class CategoryController {
 
         return createdCategory;
     }
+
+
 }

@@ -6,6 +6,7 @@ import com.example.gen20javaspringbootpos.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -42,9 +43,19 @@ public class CategoryService {
         Category category = new Category(categoryDTO.getName());
         category = categoryRepository.save(category);
         CategoryDTO categoryCreated = new CategoryDTO(category.getCategoryId(), category.getName());
-
         return categoryCreated;
     }
+
+//    public CategoryDTO createCategoryAsync(CategoryDTO categoryDTO) throws InterruptedException {
+//        Category category = new Category(categoryDTO.getName());
+//        category = categoryRepository.save(category);
+//        CategoryDTO categoryCreated = new CategoryDTO(category.getCategoryId(), category.getName());
+//        Thread.sleep(15000);
+//        System.out.println(categoryCreated);
+//        return categoryCreated;
+//    }
+
+
 
     public CategoryDTO createCategoryRedis(CategoryDTO categoryDTO) {
         String redisKey = "category:" + categoryDTO.getCategoryId();
